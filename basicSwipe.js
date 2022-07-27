@@ -4,24 +4,36 @@ function addSwipeEvent(theDom, eventName, handleEvent) {
 
     theDom.addEventListener('touchstart', function(e){
         switch (eventName) {
-            case "swipeDown" | "swipeUp":
+            case "swipeUp":
                 eStart = e.targetTouches[0].clientY;
                 break;
-            case "swipeLeft" | "swipeRight":
+            case "swipeDown":
+                eStart = e.targetTouches[0].clientY;
+                break;
+            case "swipeLeft":
+                eStart = e.targetTouches[0].clientX;
+                break;
+            case "swipeRight":
                 eStart = e.targetTouches[0].clientX;
                 break;
             default:
                 eStart = e.targetTouches[0].clientY;
                 break;
         }
-    }, false);
+    }, { passive: true });
 
     theDom.addEventListener('mousedown', function(e){
         switch (eventName) {
-            case "swipeDown" | "swipeUp":
+            case "swipeUp":
                 eStart = e.clientY;
                 break;
-            case "swipeLeft" | "swipeRight":
+            case "swipeDown":
+                eStart = e.clientY;
+                break;
+            case "swipeLeft":
+                eStart = e.clientX;
+                break;
+            case "swipeRight":
                 eStart = e.clientX;
                 break;
             default:
@@ -32,7 +44,7 @@ function addSwipeEvent(theDom, eventName, handleEvent) {
 
     theDom.addEventListener('touchmove', function(e){
         e.preventDefault();
-    }, false)
+    }, { passive: true })
 
     theDom.addEventListener('mousemove', function(e){
         e.preventDefault();
@@ -41,10 +53,16 @@ function addSwipeEvent(theDom, eventName, handleEvent) {
     theDom.addEventListener('touchend', function(e){
 
         switch (eventName) {
-            case "swipeDown" | "swipeUp":
+            case "swipeUp":
                 eEnd = e.changedTouches[0].clientY;
                 break;
-            case "swipeLeft" | "swipeRight":
+            case "swipeDown":
+                eEnd = e.changedTouches[0].clientY;
+                break;
+            case "swipeLeft":
+                eEnd = e.changedTouches[0].clientX;
+                break;
+            case "swipeRight":
                 eEnd = e.changedTouches[0].clientX;
                 break;
             default:
@@ -84,10 +102,16 @@ function addSwipeEvent(theDom, eventName, handleEvent) {
     theDom.addEventListener('mouseup', function(e){
 
         switch (eventName) {
-            case "swipeDown" | "swipeUp":
+            case "swipeUp":
                 eEnd = e.clientY;
                 break;
-            case "swipeLeft" | "swipeRight":
+            case "swipeDown":
+                eEnd = e.clientY;
+                break;
+            case "swipeLeft":
+                eEnd = e.clientX;
+                break;
+            case "swipeRight":
                 eEnd = e.clientX;
                 break;
             default:
